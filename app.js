@@ -5,7 +5,7 @@ const shopRoutes = require('./routes/shop')
 
 const app = express();
 
-app.use(adminRoutes)
+app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 
 
