@@ -1,9 +1,13 @@
 const express = require("express");
 
-const app = express()
+const app = express();
 
-app.get('/', (req, res) => {
-    res.send("salam")
-})
+app.get("/", (req, res) => {
+    res.send("Shop Page");
+});
 
-app.listen(3000)
+app.get("/add-product", (req, res) => {
+    res.send("add-product");
+});
+
+app.listen(3000);
