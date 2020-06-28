@@ -2,7 +2,7 @@ const Product = require("../models/single-product");
 
 module.exports.addProductPage = (req, res) => {
     res.render("admin/add-product", {
-        pageTitle: "مدیریت",
+        pageTitle: "Admin Panel",
     });
 };
 
@@ -12,10 +12,10 @@ module.exports.sendAllProducts = (req, res) => {
     res.redirect("/");
 };
 
-module.exports.getAllProducts = (req, res) => {
+module.exports.getProducts = (req, res) => {
     Product.fetchAllProducts((products) => {
-        res.render("shop/product-list", {
-            pageTitle: "فروشگاه",
+        res.render("admin/products", {
+            pageTitle: "Admin Products",
             productsArray: products,
         });
     });
