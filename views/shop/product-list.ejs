@@ -5,6 +5,8 @@
         <%  if(productsArray.length > 0){ %>
                     <% for(let counter of productsArray){ %>
                     <p>Product Name: <%=counter.title %></p>
+                    <p>Product Description: <%=counter.description %></p>
+                    <p>Product Price: <%=counter.price %></p>
                     <% } %>
         <% } else {  %>
                 <p>There is no Products</p>

@@ -9,6 +9,12 @@ body {
     /* direction: rtl; */
 }
 
+.center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 .top-menu {
     width: 100%;
     min-height: 3em;
@@ -42,6 +48,7 @@ body {
 
 .content {
     margin: 0 2em;
+    align-items: center;
 }
 
 .add-product-form input {
