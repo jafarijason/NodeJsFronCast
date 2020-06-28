@@ -11,9 +11,7 @@
                         <h2>  <%=product.title %></h2>
                         <p class="product-description">Product Description: <%=product.description %></p>
                         <p class="product-price">Product Price: <%=product.price %></p>
-                        <form action="/add-to-cart" method="POST" class="add-product-form">
-                            <button type="">Add to basket</button>                            
-                        </form>
+                        <%- include('../includes/add-to-cart.ejs' , {product: product }) %>
                         <a href="/products/<%=product.id %>">Product detail</a>
                     </div>
                     
