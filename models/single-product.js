@@ -1,22 +1,6 @@
-const fs = require("fs");
-const path = require("path");
+const getDB = require("../util/database").getDB;
 
-const filePath = path.join(
-    path.dirname(process.mainModule.filename),
-    "data",
-    "product.json"
-);
-
-const getProductsFromFile = (cb) => {
-    fs.readFile(filePath, (err, fileContent) => {
-        if (err) {
-            cb([]);
-        }
-        cb(JSON.parse(fileContent));
-    });
-};
-
-module.exports = class Product {
+class Product {
     constructor(title, description, price) {
         this.title = title;
         this.description = description;
@@ -24,28 +8,18 @@ module.exports = class Product {
     }
 
     saveProductData() {
-        this.id = Math.floor(Math.random() * 100);
-        getProductsFromFile((products) => {
-            products.push(this);
+        const db = getDB();
 
-            fs.writeFile(filePath, JSON.stringify(products), (err1) => {
-                console.log(err1);
+        return db
+            .collection("products")
+            .insertOne(this)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((err) => {
+                console.log(err);
             });
-        });
     }
+}
 
-    static fetchAllProducts(cb) {
-        getProductsFromFile(cb);
-    }
-
-    static fetchOneProduct(id, cb) {
-        getProductsFromFile((products) => {
-
-            const oneProduct = products.find((p) => {
-                return p.id == id;
-            });
-            console.log(oneProduct);
-            cb(oneProduct);
-        });
-    }
-};
+module.exports = Product
