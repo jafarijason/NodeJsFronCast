@@ -10,7 +10,8 @@ module.exports.sendAllProducts = (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;
-    const products = new Product(title, description, price);
+    const uId = req.user._id
+    const products = new Product(title, description, price, uId);
     products
         .saveProductData()
         .then((result) => {
