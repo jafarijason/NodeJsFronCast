@@ -3,6 +3,8 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const mongoConnect = require("./util/database").mongoDBConnect;
+
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
@@ -21,4 +23,8 @@ app.use((req, res) => {
     res.status(404).send("Page Not Found.");
 });
 
-app.listen(3000);
+mongoConnect(() => {
+    app.listen(3000);
+});
+
+// app.listen(3000);
