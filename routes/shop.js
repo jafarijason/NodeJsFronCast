@@ -1,6 +1,10 @@
 const path = require('path')
 
 const express = require('express')
+const adminData = require('./admin')
+
+const products = adminData.products
+console.log(products);
 
 const router = express.Router()
 
