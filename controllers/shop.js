@@ -13,9 +13,13 @@ module.exports.getAllProducts = (req, res) => {
 
 module.exports.getOneProduct = (req, res) => {
     const pId = req.params.productId
-    console.log(pId);
+    Product.fetchOneProduct(pId, (product) => {
+        res.render('shop/product-details', {
+            product: product,
+            pageTitle: `Product Deateil ${product.title}`
+        })
+    })
 
-    res.redirect('/')
 }
 
 module.exports.getIndex = (req, res) => {
