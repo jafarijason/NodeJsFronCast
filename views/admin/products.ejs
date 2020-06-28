@@ -1,3 +1,25 @@
 <%- include('../includes/header.ejs') %>
- 
+    <main class="content">
+        <h1 class="page-title">Admin Products</h1>
+        <h2>Product List</h2>
+        <%  if(productsArray.length > 0){ %>
+                    <% for(let product of productsArray){ %>
+                    <div class="product-info">
+                        <figure class="product-image">
+                            <img src='../images/product-image.png' alt="">
+                        </figure>
+                        <h2>  <%=product.title %></h2>
+                        <p class="product-description">Product Description: <%=product.description %></p>
+                        <p class="product-price">Product Price: <%=product.price %></p>
+                        <a href="/admin/edit-product">Edit</a>
+                        <form action="/admin/delete-product" method="POST>
+                          <button type="submit">delete</button>
+                        </form>
+                    </div>
+                    
+                    <% } %>
+        <% } else {  %>
+                <p>There is no Products</p>
+        <% }  %>
+    </main>
 <%- include('../includes/footer.ejs') %>

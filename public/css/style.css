@@ -78,7 +78,7 @@ body {
 }
 
 .product-info {
-    float: right;
+    float: left;
     text-align: center;
     background: #fff;
     margin: 25px 15px;
