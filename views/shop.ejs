@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shop page</title>
+    <title><%= pageTitle  %></title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -24,6 +24,13 @@
     <main class="content">
         <h1 class="page-title">فروشگاه</h1>
         <h2>لیست محصولات</h2>
+        <%  if(productsArray.length > 0){ %>
+                 <% for(let counter of productsArray){ %>
+                    <p>نام محصول: <%=counter.title %></p>
+                 <% } %>
+        <% } else {  %>
+                <p>محصول وجود ندارد</p>
+        <% }  %>
     </main>
 </body>
 
