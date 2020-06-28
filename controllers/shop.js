@@ -37,3 +37,21 @@ module.exports.getIndex = (req, res) => {
             console.log(err);
         });
 };
+
+module.exports.getCart = (req, res) => {
+    res.render("shop/cart", {
+        pageTitle: "shop basket",
+    });
+};
+
+module.exports.postCart = (req, res) => {
+    const pId = req.body.productId;
+    Product.fetchOneProduct(pId)
+        .then((product) => {
+            return req.user.addToCart(product);
+        })
+        .then((result) => {
+            console.log(result);
+            res.redirect("/cart");
+        });
+};
