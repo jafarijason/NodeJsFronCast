@@ -9,7 +9,9 @@ const products = [];
 router.get("/add-product", (req, res) => {
     // res.send("add-product");
     // res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
-    res.render("add-product");
+    res.render("add-product", {
+        pageTitle: 'مدیریت',
+    });
 });
 
 router.post("/add-product", (req, res) => {

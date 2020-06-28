@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add product</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-    <header>
-        <nav class="top-menu">
-            <ul>
-                <li>
-                    <a href="/">فروشگاه</a>
-                </li>
-                <li>
-                    <a href="/admin/add-Product">اضافه کردن محصول</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<%- include('includes/header.ejs') %>
     <main class="content">
         <h1 class="page-title">اضافه کردن محصول</h1>
         <form method="POST" class="add-product-form">
@@ -28,6 +6,4 @@
             <button style=" font-family: 'Vazir'">افزودن</button>
         </form>
     </main>
-</body>
-
-</html>
+<%- include('includes/footer.ejs') %>
