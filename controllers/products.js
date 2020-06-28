@@ -7,16 +7,16 @@ module.exports.addProductPage = (req, res) => {
 };
 
 module.exports.sendAllProducts = (req, res) => {
-    // products.push({ title: req.body.title });
     const products = new Product(req.body.title);
-    products.saveProductData()
+    products.saveProductData();
     res.redirect("/");
 };
 
 module.exports.getAllProducts = (req, res) => {
-    const products = Product.fetchAllProducts()
-    res.render("shop", {
-        pageTitle: "فروشگاه",
-        productsArray: products,
+    Product.fetchAllProducts((products) => {
+        res.render("shop", {
+            pageTitle: "فروشگاه",
+            productsArray: products,
+        });
     });
 };
