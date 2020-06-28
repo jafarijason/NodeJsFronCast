@@ -11,21 +11,36 @@ module.exports.sendAllProducts = (req, res) => {
     const description = req.body.description;
     const price = req.body.price;
     const products = new Product(title, description, price);
-    products.saveProductData()
-        .then(result => {
-            console.log('Product Created!');
-            res.redirect('/admin/add-product')
+    products
+        .saveProductData()
+        .then((result) => {
+            console.log("Product Created!");
+            res.redirect("/admin/add-product");
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
-        })
+        });
 };
 
-// module.exports.getProducts = (req, res) => {
-//     Product.fetchAllProducts((products) => {
-//         res.render("admin/products", {
-//             pageTitle: "Admin Products",
-//             productsArray: products,
-//         });
-//     });
-// };
+module.exports.getProducts = (req, res) => {
+    Product.fetchAllProducts()
+        .then((products) => {
+            res.render("admin/products", {
+                productsArray: products,
+                pageTitle: "Admin Products",
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+module.exports.deleteProducts = (req, res) => {
+    const pId = req.body.productId;
+    Product.deleteOneProduct(pId)
+        .then(() => {
+            console.log("Product Deleted!");
+            res.redirect("/admin/products");
+        })
+        .catch((err) => console.log(err));
+};
