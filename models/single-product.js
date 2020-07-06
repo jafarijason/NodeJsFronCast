@@ -1,3 +1,8 @@
+const mongoose = require('mongoose')
+
+const Schema = mongoose.connect.Schema
+
+
 // const mongodb = require("mongodb");
 // const getDB = require("../database").getDB;
 

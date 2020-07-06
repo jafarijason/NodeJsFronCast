@@ -36,7 +36,7 @@ app.use((req, res) => {
 });
 
 
-mongoose.connect(connetionUrl, { useNewUrlParser: true })
+mongoose.connect(connetionUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         app.listen(3000)
     })
